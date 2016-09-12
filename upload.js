@@ -24,31 +24,26 @@ var output = $("#output");
 // initialize
 function init() {
 
-	var fileselect = $("#fileselect"),
-		filedrag = $("#filedrag"),
-		submitbutton = $("#submitbutton"),
-		wheel = $("#challenge");
-
-	output.hide();
-
-	wheel.listen("change", update);
+	// challenge select
+	$("#challenge").listen("change", update);
 
 
 	// file select
-	fileselect.listen("change", onDrop);
+	$("#fileselect").listen("change", onDrop);
 
 	// is XHR2 available?
 	var xhr = new XMLHttpRequest();
 	if (xhr.upload) {
 
 		// file drop
+		var filedrag = $("#filedrag");
 		filedrag.listen("dragover", onHover);
 		filedrag.listen("dragleave", onHover);
 		filedrag.listen("drop", onDrop);
 		filedrag.show();
 
 		// remove submit button
-		submitbutton.hide();
+		$("#submitbutton").hide();
 	}
 
 }
@@ -77,8 +72,7 @@ function onDrop(e) {
 }
 
 function parse(file) {
-	var output = $("#output");
-	output.show();
+	$("#results").show();
 
 	try {
 		var reader = new FileReader();

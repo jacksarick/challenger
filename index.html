@@ -12,11 +12,13 @@
 
 		<!-- About Section -->
 		<h2>About</h2>
-		<p>This is the site for practice challenge problems. WRITE MORE.</p>
+		<p>A small site designed to provide Javascript challenges. <a href="javascript:$('#help').show();">Show Help</a></p>
 		
 		<!-- Help Section-->
-		<h2>Help</h2>
-		<p>To attempt a challenge, upload a JavaScript file (normally end with .js) with a function entitled <code>main</code>. This function, when run with the given arguments, should return the answer. Error messages will show up in console, as will any <code>console</code> functions from your program. <a href="example.html">Example here</a>.</p>
+		<div id="help">
+			<h2>Help</h2>
+			<p>To attempt a challenge, upload a JavaScript file (normally end with .js) with a function entitled <code>main</code>. This function, when run with the given arguments, should return the answer. Error messages will show up in console, as will any <code>console</code> functions from your program. <a href="example.html">Example here</a>.</p>
+		</div>
 
 		<!-- Challenge Section -->
 		<h2>Challenge</h2>
@@ -46,6 +48,7 @@
 
 			<fieldset>
 				<legend>File Upload</legend>
+				<b>Upload your file here</b>
 
 				<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000">
 
@@ -62,15 +65,22 @@
 		</form>
 
 		<!-- Output -->
-		<div id="messages">
-		<p><b>Status Messages:</b></p>
-		<pre id="output"></pre>
+		<div id="results">
+			<p><b>Results:</b></p>
+			<pre id="output"></pre>
 		</div>
 
 		<!-- The JS that runs this whole OP. -->
 		<script src="challenges.js"></script>
 		<script src="upload.js"></script>
 		<script type="text/javascript">
+			window.onload = function() {
+				console.log("hello")
+				// Hide results by default
+				$("#results").hide();
+				$('#help').hide();
+			};
+
 			// call initialization file
 			if (window.File && window.FileList && window.FileReader) {
 				init();
