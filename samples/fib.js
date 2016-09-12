@@ -1,9 +1,8 @@
 function main(n) {
-	// Find n factorial
-	if (n <= 0) {
+	// Find the n-th number of the Fibonacci sequence
+	if (n <= 2) {
 		return 1;
 	}
 
-	console.log("Currently finding factorial " + n);
-	return n * main(n-1);
+	return main(n-1) + main(n-2);
 }

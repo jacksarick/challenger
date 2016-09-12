@@ -24,11 +24,11 @@ challenges = {
 	"fib": {
 		"name": "Fibonacci",
 		"desc": "Find the n-th number of the Fibonacci sequence.",
-		"sample": ["", "15625"],
+		"sample": ["7", "13"],
 		"tests": [
-			[[2,2], 4],
-			[[12, 4], 20736],
-			[[3, 5], 243]
+			[10, 55],
+			[15, 610],
+			[34, 5702887],
 		]
 	}
 }
