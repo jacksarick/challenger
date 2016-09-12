@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>CS challenges</title>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" type="text/css" media="all" href="styles.css" />
+	</head>
+	<body>
+
+		<!-- Title -->
+		<h1>Computer Science Challenge Upload</h1>
+
+		<!-- About Section -->
+		<h2>About</h2>
+		<p>This is the site for practice challenge problems. WRITE MORE.</p>
+		
+		<!-- Help Section-->
+		<h2>Help</h2>
+		<p>To attempt a challenge, upload a JavaScript file (normally end with .js) with a function entitled <code>main</code>. This function, when run with the given arguments, should return the answer. Error messages will show up in console, as will any <code>console</code> functions from your program. <a href="example.html">Example here</a>.</p>
+
+		<!-- Challenge Section -->
+		<h2>Challenge</h2>
+
+		<h3>Challenge Select</h3>
+		<select id="challenge">
+			<option disabled selected value> ---- </option>
+			<option value="test">Test</option>
+			<option value="exp">Exponents</option>
+			<option value="fizz">Fizz Buzz</option>
+			<option value="fib">Fibonacci</option>
+		</select>
+		<p id="desc">
+			Select Challenge<br>
+		</p>
+		<p>
+			<b>Sample:</b>
+			<pre>
+				Input: <span id="sample-input"></span>
+				Output: <span id="sample-output"></span>
+			</pre>
+		</p>
+
+		<h3>Upload</h3>
+		<!-- Upload Form -->
+		<form id="upload" method="POST" enctype="multipart/form-data">
+
+			<fieldset>
+				<legend>File Upload</legend>
+
+				<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000">
+
+				<div style="padding:10px;">
+					<label for="fileselect">Files to upload:</label>
+					<input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
+					<div id="filedrag">or drop files here (unstable)</div>
+				</div>
+
+				<div id="submitbutton">
+					<button type="submit">Upload Files</button>
+				</div>
+			</fieldset>
+		</form>
+
+		<!-- Output -->
+		<div id="messages">
+		<p><b>Status Messages:</b></p>
+		<pre id="output"></pre>
+		</div>
+
+		<!-- The JS that runs this whole OP. -->
+		<script src="challenges.js"></script>
+		<script src="upload.js"></script>
+		<script type="text/javascript">
+			// call initialization file
+			if (window.File && window.FileList && window.FileReader) {
+				init();
+			}
+		</script>
+	</body>
+</html>

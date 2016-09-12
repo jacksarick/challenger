@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Example</title>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" type="text/css" media="all" href="styles.css" />
+	</head>
+	<body>
+		<h1>Example Program <a href="..">↩</a></h1>
+		<h2>Input program</h2>
+
+		<pre>
+			function main(n) {
+				// Find n factorial
+				if (n <= 0) {
+					return 1;
+				}
+
+				console.log("Currently on: " + n);
+				return n * main(n-1);
+			}
+		</pre>
+
+		<h2>Output</h2>
+		<pre>
+			Round 1: ✅
+			Input: 5
+			Output: 120
+
+			Round 2: ✅
+			Input: 12
+			Output: 479001600
+
+			Round 3: ✅
+			Input: 1
+			Output: 1
+
+			Success! (3/3)
+		</pre>
+
+		<h2>Console (for round 1)</h2>
+		<pre>
+			Currently finding factorial 5
+			Currently finding factorial 4
+			Currently finding factorial 3
+			Currently finding factorial 2
+			Currently finding factorial 1
+		</pre>
+	</body>
+</html>
