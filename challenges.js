@@ -21,6 +21,17 @@ challenges = {
 		]
 	},
 
+	"pal": {
+		"name": "Palindrome",
+		"desc": "A word is a palindrome if it is the same forwards and backwards. Print 1 if it is a palindrome, 0 if it is not.",
+		"sample": ["racecar", "1"],
+		"tests": [
+			["'tacocat'", 1],
+			["'tunafish'", 0],
+			["'rotator'", 1]
+		]
+	},
+
 	"fib": {
 		"name": "Fibonacci",
 		"desc": "Find the n-th number of the Fibonacci sequence.",

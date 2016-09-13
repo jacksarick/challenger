@@ -37,30 +37,14 @@ function init() {
 
 		// file drop
 		var filedrag = $("#filedrag");
-		filedrag.listen("dragover", onHover);
-		filedrag.listen("dragleave", onHover);
 		filedrag.listen("drop", onDrop);
 		filedrag.show();
-
-		// remove submit button
-		$("#submitbutton").hide();
 	}
 
 }
 
-// file drag hover
-function onHover(e) {
-	e.stopPropagation();
-	e.preventDefault();
-	e.target.className = (e.type == "dragover" ? "hover" : "");
-}
-
 // file selection
 function onDrop(e) {
-
-	// cancel event and hover styling
-	onHover(e);
-
 	// fetch FileList object
 	var files = e.target.files || e.dataTransfer.files;
 
@@ -93,7 +77,6 @@ function test(prog) {
 		var tests = [];
 
 		for (var i = 0; i < challenge.tests.length ; i++) {
-			console.log("main(" + challenge.tests[i][0] + ")");
 			tests.push("main([" + challenge.tests[i][0] + "])");
 		}
 
@@ -111,30 +94,45 @@ function test(prog) {
 function score(input) {
 
 	try {
-		var pass = [
-			input[0] == challenge.tests[0][1],
-			input[1] == challenge.tests[1][1],
-			input[2] == challenge.tests[2][1]
-		]
+		var text = "";
+		var pass = [];
+		var tests = challenge.tests;
+		// var pass = [
+		// 	input[0] == challenge.tests[0][1],
+		// 	input[1] == challenge.tests[1][1],
+		// 	input[2] == challenge.tests[2][1]
+		// ]
 
 		// challenge.tests = challenge.tests.map(function(x) { return x[1] });
 
-		var text = "Round 1:<br>\
-Input: " + challenge.tests[0][0] + "<br>\
-Output: " + input[0] +"<br>\
-Passed: " + pass[0] +"\
-<br><br>\
-Round 2:<br>\
-Input: " + challenge.tests[1][0] + "<br>\
-Output: " + input[1] +"<br>\
-Passed: " + pass[1] +"\
-<br><br>\
-Round 3:<br>\
-Input: " + challenge.tests[2][0] + "<br>\
-Output: " + input[2] +"<br>\
-Passed: " + pass[2] +"\
-<br><br>\
-Success! (" + pass.reduce((a, b) => a + b, 0) + "/3)".replace();
+// 		var text = "Round 1:<br>\
+// Input: " + challenge.tests[0][0] + "<br>\
+// Output: " + input[0] +"<br>\
+// Passed: " + pass[0] +"\
+// <br><br>\
+// Round 2:<br>\
+// Input: " + challenge.tests[1][0] + "<br>\
+// Output: " + input[1] +"<br>\
+// Passed: " + pass[1] +"\
+// <br><br>\
+// Round 3:<br>\
+// Input: " + challenge.tests[2][0] + "<br>\
+// Output: " + input[2] +"<br>\
+// Passed: " + pass[2] +"\
+// <br><br>\
+		for (var i = 0; i < tests.length; i++) {
+			var correct = input[i] == tests[i][1];
+			pass.push(correct);
+
+			text += "Round " + (i+1) + ": <br>";
+			text += "Input: " + tests[i][0] + "<br>";
+			text += "Output: " + input[i] + "<br>";
+			text += "Passed: " + (correct ? "✅" : "❌") + "<br>";
+			text += "<br>";
+		}
+
+		text += "Success! (" + pass.reduce((a, b) => a + b, 0) + "/3)";
+		console.log(text);
 		
 		output.set(text);
 	}
@@ -150,4 +148,12 @@ function update() {
 	$("#desc").set(challenge.desc);
 	$("#sample-input").set(challenge.sample[0]);
 	$("#sample-output").set(challenge.sample[1]);
+}
+
+function add_challenges() {
+	var options = $("#challenge");
+	var keys = Object.keys(challenges);
+	for (var i = 0; i < keys.length; i++) {
+		options.append("<option value='" + keys[i] + "'>" + challenges[keys[i]]["name"] +"</option>")
+	}
 }

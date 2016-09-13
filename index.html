@@ -23,13 +23,10 @@
 		<!-- Challenge Section -->
 		<h2>Challenge</h2>
 
+		<!-- Challenge Select Sub-section -->
 		<h3>Challenge Select</h3>
 		<select id="challenge">
 			<option disabled selected value> ---- </option>
-			<option value="test">Test</option>
-			<option value="exp">Exponents</option>
-			<option value="fizz">Fizz Buzz</option>
-			<option value="fib">Fibonacci</option>
 		</select>
 		<p id="desc">
 			Select Challenge<br>
@@ -42,29 +39,22 @@
 			</pre>
 		</p>
 
+		<!-- Upload Sub-section -->
 		<h3>Upload</h3>
-		<!-- Upload Form -->
-		<form id="upload" method="POST" enctype="multipart/form-data">
+		<fieldset>
+			<legend>File Upload</legend>
+			<b>Upload your file here</b>
 
-			<fieldset>
-				<legend>File Upload</legend>
-				<b>Upload your file here</b>
+			<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000">
 
-				<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000">
+			<div style="padding:10px;">
+				<label for="fileselect">Files to upload:</label>
+				<input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
+				<div id="filedrag">or drop files on to the button</div>
+			</div>
+		</fieldset>
 
-				<div style="padding:10px;">
-					<label for="fileselect">Files to upload:</label>
-					<input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
-					<div id="filedrag">or drop files here (unstable)</div>
-				</div>
-
-				<div id="submitbutton">
-					<button type="submit">Upload Files</button>
-				</div>
-			</fieldset>
-		</form>
-
-		<!-- Output -->
+		<!-- Output Sub-section -->
 		<div id="results">
 			<p><b>Results:</b></p>
 			<pre id="output"></pre>
@@ -75,10 +65,12 @@
 		<script src="upload.js"></script>
 		<script type="text/javascript">
 			window.onload = function() {
-				console.log("hello")
 				// Hide results by default
 				$("#results").hide();
 				$('#help').hide();
+
+				// Populate challenges
+				add_challenges();
 			};
 
 			// call initialization file
