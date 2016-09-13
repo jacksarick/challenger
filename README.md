@@ -1,4 +1,4 @@
-# Challenger 🚀
+# Challenger 
 
 A small site designed to provide Javascript challenges. Demo [here](https://sarick.tech/challenger).
 
@@ -12,4 +12,4 @@ If you have any challenges you would like to add, feel free! I'm always making m
 - Can't do multiple tries in one session.
 - Quite a lot really.
 
-Special thanks to Craig Buckler for the basis of the upload code, and to Jeremy Thomas for the CSS.
+Special thanks to Craig Buckler for the basis of the upload code.
