@@ -32,6 +32,17 @@ challenges = {
 		]
 	},
 
+	"vote": {
+		"name": "Voting",
+		"desc": "In a vote between A and B, count the number of votes to determine whether A won (1), tied (0) or lost (-1).",
+		"sample": ["AABBAAAB", 1],
+		"tests": [
+			["'AAABBAAABBB'", 1],
+			["'BBBBABBBB'", -1],
+			["'AAABBB'", 0]
+		]
+	},
+
 	"fib": {
 		"name": "Fibonacci",
 		"desc": "Find the n-th number of the Fibonacci sequence.",
