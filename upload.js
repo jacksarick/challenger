@@ -19,6 +19,7 @@ var $ = function(name) { return new Tag(name); }
 
 var selected, challenge;
 var output = $("#output");
+var files;
 
 
 // initialize
@@ -27,32 +28,30 @@ function init() {
 	// challenge select
 	$("#challenge").listen("change", update);
 
-
 	// file select
 	$("#fileselect").listen("change", onDrop);
 
-	// is XHR2 available?
-	var xhr = new XMLHttpRequest();
-	if (xhr.upload) {
-
-		// file drop
-		var filedrag = $("#filedrag");
-		filedrag.listen("drop", onDrop);
-		filedrag.show();
-	}
+	// Resubmit
+	$("#resubmit").listen("click", read);
 
 }
 
 // file selection
 function onDrop(e) {
-	// fetch FileList object
-	var files = e.target.files || e.dataTransfer.files;
+	$('#resubmit').show();
 
+	// fetch FileList object
+	files = e.target.files || e.dataTransfer.files;
+
+	// read files
+	read();
+}
+
+function read() {
 	// process all File objects
 	for (var i = 0, f; f = files[i]; i++) {
 		parse(f);
 	}
-
 }
 
 function parse(file) {
@@ -97,29 +96,7 @@ function score(input) {
 		var text = "";
 		var pass = [];
 		var tests = challenge.tests;
-		// var pass = [
-		// 	input[0] == challenge.tests[0][1],
-		// 	input[1] == challenge.tests[1][1],
-		// 	input[2] == challenge.tests[2][1]
-		// ]
-
-		// challenge.tests = challenge.tests.map(function(x) { return x[1] });
-
-// 		var text = "Round 1:<br>\
-// Input: " + challenge.tests[0][0] + "<br>\
-// Output: " + input[0] +"<br>\
-// Passed: " + pass[0] +"\
-// <br><br>\
-// Round 2:<br>\
-// Input: " + challenge.tests[1][0] + "<br>\
-// Output: " + input[1] +"<br>\
-// Passed: " + pass[1] +"\
-// <br><br>\
-// Round 3:<br>\
-// Input: " + challenge.tests[2][0] + "<br>\
-// Output: " + input[2] +"<br>\
-// Passed: " + pass[2] +"\
-// <br><br>\
+		
 		for (var i = 0; i < tests.length; i++) {
 			var correct = input[i] == tests[i][1];
 			pass.push(correct);
@@ -132,7 +109,6 @@ function score(input) {
 		}
 
 		text += "Success! (" + pass.reduce((a, b) => a + b, 0) + "/3)";
-		console.log(text);
 		
 		output.set(text);
 	}

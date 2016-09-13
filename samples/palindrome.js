@@ -1,3 +1,4 @@
 function main(word) {
-	return word.split() == word.split().reverse();
+	console.log(word);
+	return word.split("") == word.split("").reverse();
 }

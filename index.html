@@ -43,13 +43,13 @@
 		<h3>Upload</h3>
 		<fieldset>
 			<legend>File Upload</legend>
-			<b>Upload your file here</b>
+			<b>Upload your file here </b><button type="button" id="resubmit">Resubmit</button>
 
 			<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000">
 
 			<div style="padding:10px;">
 				<label for="fileselect">Files to upload:</label>
-				<input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
+				<input type="file" id="fileselect" name="fileselect"/>
 				<div id="filedrag">or drop files on to the button</div>
 			</div>
 		</fieldset>
@@ -68,6 +68,7 @@
 				// Hide results by default
 				$("#results").hide();
 				$('#help').hide();
+				$('#resubmit').hide();
 
 				// Populate challenges
 				add_challenges();
