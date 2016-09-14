@@ -1,6 +1,6 @@
 # Challenger 
 
-A small site designed to provide Javascript challenges. Demo [here](https://sarick.tech/challenger).
+A small site designed to provide Javascript challenges. Demo [here](https://sarick.tech/challenger). It's not for competition purposes by any means (cheating would be super easy), it's for teaching purposes.
 
 You can set it up yourself with relative ease. Clone this repo, then edit CSS, add challenges, and modify content as you wish (or none at all). Point a webserver at it, and you should be good to go!
 

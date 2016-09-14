@@ -13,6 +13,7 @@ function Tag(x) {
 	this.show = function(s) { this.main.style.display = "block"; }
 	this.hide = function(s) { this.main.style.display = "none"; }
 	this.listen = function(a, f) { this.main.addEventListener(a, f, false); }
+	this.disabled = function(s) { this.main.disabled = s; }
 }
 
 var $ = function(name) { return new Tag(name); }
@@ -39,6 +40,7 @@ function init() {
 // file selection
 function onDrop(e) {
 	$('#resubmit').show();
+	output.set("running.");
 
 	// fetch FileList object
 	files = e.target.files || e.dataTransfer.files;
@@ -48,6 +50,7 @@ function onDrop(e) {
 }
 
 function read() {
+	output.set("running..");
 	// process all File objects
 	for (var i = 0, f; f = files[i]; i++) {
 		parse(f);
@@ -56,6 +59,7 @@ function read() {
 
 function parse(file) {
 	$("#results").show();
+	output.set("running...");
 
 	try {
 		var reader = new FileReader();
@@ -72,6 +76,7 @@ function parse(file) {
 }
 
 function test(prog) {
+	output.set("running....");
 	try {
 		var tests = [];
 
@@ -91,7 +96,7 @@ function test(prog) {
 }
 
 function score(input) {
-
+	output.set("running.....");
 	try {
 		var text = "";
 		var pass = [];
@@ -119,6 +124,8 @@ function score(input) {
 }
 
 function update() {
+	$('#fileselect').disabled(false);
+
 	selected = $("#challenge").value();
 	challenge = challenges[selected];
 	$("#desc").set(challenge.desc);

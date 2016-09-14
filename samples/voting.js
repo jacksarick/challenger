@@ -1,9 +1,8 @@
 function main(votes) {
-	console.log(votes);
-	votes = votes.split("");
+	votes = votes[0].split("");
 
-	const isA = function(x) { return x == 'a'}
-	const isB = function(x) { return x == 'b'}
+	const isA = function(x) { return x == 'A'}
+	const isB = function(x) { return x == 'B'}
 	sum = function(arr) {
 		return arr.reduce(function(a, b) { return a + b; }, 0);
 	}
