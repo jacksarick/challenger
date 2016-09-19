@@ -131,6 +131,9 @@ function update() {
 	$("#desc").set(challenge.desc);
 	$("#sample-input").set(challenge.sample[0]);
 	$("#sample-output").set(challenge.sample[1]);
+	
+	$("#results").hide();
+	output.set("");
 }
 
 function add_challenges() {

@@ -4,12 +4,10 @@ body {
 	line-height: 1.5;
 	padding: 4em 1em;
 	color: #555;
-}
-
-body {
 	font-family: "Helvetica", "Arial", sans-serif;
 	margin-top: 1em;
 	padding-top: 1em;
+	font-size: 14pt;
 }
 
 h1,
